@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.env
+data/store.json
+data/asha_sahayak.sqlite3
+data/asha_sahayak.sqlite3-*
+data/store.json.migrated*
+data/reports/*.pdf
+tmp-*/
+tmp-*.png
+tmp-*.html
+ui-*-*.html
+ui-smoke.html

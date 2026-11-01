@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#171813">
+  <meta name="description" content="ASHA SAHAYAK is a voice-first community care documentation workspace with local SQLite storage and optional PostgreSQL support.">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Asha Sahayak | Voice to care record</title>
+  <link rel="icon" href="/favicon.png" type="image/png" sizes="128x128">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-theme="light">
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar" aria-label="Main workspace">
+    <a class="brand" href="#" data-page="dashboard" aria-label="Asha Sahayak overview">
+      <span class="brand-mark"><img src="/brand-logo.png" alt=""></span>
+      <span><b>ASHA SAHAYAK</b><small>Voice to care record</small></span>
+    </a>
+    <div class="local-chip"><i></i><span data-i18n="localRecords">LOCAL RECORDS</span></div>
+    <div class="menu-intro"><span data-i18n="fieldWorkspace">YOUR FIELD WORKSPACE</span><h2 data-i18n="menuQuestion">What do you want<br>to do <em>today?</em></h2></div>
+    <button class="sidebar-create" data-action="new-encounter" aria-label="Start a new voice visit">
+      <span class="create-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="/icons.svg#icon-plus"/></svg></span>
+      <span class="create-copy"><b data-i18n="newVisit">New voice visit</b><small data-i18n="recordEncounter">Record an encounter</small></span>
+      <span class="create-arrow" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="/icons.svg#icon-arrow-right"/></svg></span>
+    </button>
+    <div class="nav-label" data-i18n="careTools">CARE TOOLS</div>
+    <nav aria-label="Main navigation">
+      <button class="nav-link active" data-page="dashboard" title="Overview"><span class="nav-ico"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="/icons.svg#icon-dashboard"/></svg></span><span class="nav-copy" data-i18n="overview">Overview</span></button>
+      <button class="nav-link" data-page="patients" title="Patients"><span class="nav-ico"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="/icons.svg#icon-people"/></svg></span><span class="nav-copy" data-i18n="patients">Patients</span></button>
+      <button class="nav-link" data-page="encounters" title="Encounters"><span class="nav-ico"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="/icons.svg#icon-file"/></svg></span><span class="nav-copy" data-i18n="encounters">Encounters</span><b id="review-count" aria-label="Records awaiting review"></b></button>
+      <button class="nav-link" data-page="followups" title="Follow-ups"><span class="nav-ico"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="/icons.svg#icon-clock"/></svg></span><span class="nav-copy" data-i18n="followups">Follow-ups</span></button>
+      <button class="nav-link" data-page="reports" title="Reports"><span class="nav-ico"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="/icons.svg#icon-report"/></svg></span><span class="nav-copy" data-i18n="reports">Report center</span></button>
+    </nav>
+    <div class="side-bottom">
+      <div class="connect-card"><b><i id="connection-dot"></i><span id="connection-label" data-i18n="databaseConnecting">Connecting to database…</span></b><small id="sync-label" data-i18n="databaseConnecting">Connecting to database…</small></div>
+      <div class="profile"><span class="avatar"><img src="/brand-logo.png" alt=""></span><span><b data-i18n="localWorker">Local worker</b><small data-i18n="noSignIn">No sign-in configured</small></span></div>
+    </div>
+  </aside>
+  <main class="main-area">
+    <header class="topbar">
+      <button id="mobile-menu" class="mobile-menu" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false" title="Menu"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="/icons.svg#icon-menu"/></svg></button>
+      <div class="crumb"><span>ASHA SAHAYAK</span><em>/</em><b id="page-title">Overview</b></div>
+      <div class="top-actions">
+        <select id="ui-language" class="select language-select" aria-label="Interface language" title="Interface language"><option value="en">EN</option><option value="hi">हिन्दी</option><option value="hinglish">Hinglish</option></select>
+        <button id="theme-toggle" class="icon-button theme-button" aria-label="Switch to dark mode" title="Dark mode"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="/icons.svg#icon-moon"/></svg></button>
+        <span class="privacy-pill"><i></i><span id="database-kind" data-i18n="databaseConnecting">Connecting to database…</span></span>
+        <button id="new-top" class="primary compact" data-action="new-encounter" aria-label="New visit"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="/icons.svg#icon-plus"/></svg><span data-i18n="newVisitShort">New visit</span></button>
+      </div>
+    </header>
+    <div class="notice" id="notice"><span class="notice-i">i</span><span data-i18n="localStorageNotice">Records use the configured database: local SQLite by default, or PostgreSQL when set. This website has no sign-in.</span><button id="dismiss-notice" aria-label="Dismiss notice" title="Dismiss"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="/icons.svg#icon-close"/></svg></button></div>
+    <section id="view" class="content" aria-live="polite" aria-busy="true">
+      <div class="loading-view"><span class="loading-mark"><img src="/brand-logo.png" alt=""></span><span class="loader"></span><b data-i18n="loading">Loading your workspace</b></div>
+    </section>
+  </main>
+  <button id="sidebar-backdrop" class="sidebar-backdrop" aria-label="Close navigation" hidden></button>
+</div>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+<div id="modal-backdrop" class="backdrop hidden"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button id="modal-close" class="modal-x" aria-label="Close" title="Close"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="/icons.svg#icon-close"/></svg></button><h2 id="modal-title"></h2><div id="modal-body"></div></section></div>
+<script src="/app.js" defer></script>
+</body>
+</html>
